@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plutonium Official - Премиум читы Standoff 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6c00ff;
+            --secondary: #00ffaa;
+            --accent: #ff0066;
+            --firo-color: #ff4d00;
+            --dark: #0a0a1a;
+            --darker: #050510;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Скрытый счетчик */
+        .visitor-counter {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 30px 50px;
+            border-radius: 20px;
+            border: 3px solid var(--firo-color);
+            box-shadow: 0 0 50px rgba(255, 77, 0, 0.5);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            animation: counterAppear 0.3s ease;
+        }
+
+        @keyframes counterAppear {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .counter-title {
+            color: var(--firo-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .counter-number {
+            font-size: 5rem;
+            color: var(--secondary);
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(0, 255, 170, 0.5);
+            margin: 20px 0;
+        }
+
+        .counter-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .counter-note {
+            color: #777;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--primary);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 28px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .support-btn {
+            background: linear-gradient(45deg, var(--firo-color), #ff9900);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .support-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 77, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Products Grid */
+        .products {
+            padding: 100px 0;
+            background: rgba(5, 5, 16, 0.8);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .product-card {
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(108, 0, 255, 0.2);
+        }
+
+        .product-icon {
+            font-size: 50px;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .product-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .product-subtitle {
+            color: #aaa;
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+
+        .pricing-options {
+            margin: 30px 0;
+        }
+
+        .price-option {
+            background: rgba(108, 0, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(108, 0, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .price-option:hover {
+            background: rgba(108, 0, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .duration {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, var(--firo-color), #ff9900);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 25px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 77, 0, 0.3);
+            background: linear-gradient(45deg, #ff9900, var(--firo-color));
+        }
+
+        /* Support Info */
+        .support-info {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(10, 10, 26, 0.9);
+        }
+
+        .support-box {
+            background: rgba(20, 20, 40, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid var(--firo-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(45deg, #0088cc, #00aced);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .telegram-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 136, 204, 0.3);
+        }
+
+        /* Footer с счетчиком */
+        footer {
+            background: rgba(5, 5, 16, 0.95);
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(108, 0, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(108, 0, 255, 0.3);
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+        }
+
+        .footer-stat {
+            text-align: center;
+            padding: 15px 25px;
+            background: rgba(20, 20, 40, 0.5);
+            border-radius: 10px;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+
+        .footer-stat:hover {
+            background: rgba(108, 0, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .footer-stat-number {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+            margin-bottom: 5px;
+        }
+
+        .footer-stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-stat-online {
+            color: #ff4d00;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .live-counter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 25px;
+            border: 1px solid rgba(108, 0, 255, 0.3);
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px var(--secondary);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .counter-text {
+            font-size: 1.1rem;
+        }
+
+        .counter-value {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .counter-hint {
+            color: #777;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+                gap: 30px;
+            }
+            
+            .product-card {
+                padding: 30px 20px;
+            }
+            
+            .support-box {
+                padding: 30px 20px;
+                margin: 0 20px;
+            }
+            
+            .telegram-link {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .counter-number {
+                font-size: 3.5rem;
+            }
+            
+            .counter-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-stats {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .footer-stat {
+                min-width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .live-counter {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Скрытый счетчик посетителей -->
+    <div class="visitor-counter" id="visitorCounter">
+        <div class="counter-title">Детальная статистика</div>
+        <div class="counter-number" id="totalVisitors">0</div>
+        <div class="counter-stats">
+            <div class="stat-item">
+                <div class="stat-number" id="todayVisitors">0</div>
+                <div class="stat-label">Сегодня</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="onlineVisitors">0</div>
+                <div class="stat-label">Сейчас онлайн</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="uniqueVisitors">0</div>
+                <div class="stat-label">Уникальных</div>
+            </div>
+        </div>
+        <div class="counter-note">Зажмите Z+X+C для просмотра статистики</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>PLUTONIUM OFFICIAL</h1>
+                    <span>PREMIUM CHEATS</span>
+                </div>
+            </div>
+            <a href="https://t.me/plutoniumsupp0rt" class="support-btn" target="_blank">
+                <i class="fab fa-telegram"></i> Поддержка
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Премиум читы для Standoff 2</h2>
+            <p>Выберите подходящий пакет для полного доминирования в игре. Все читы работают на последней версии игры с максимальной безопасностью.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="products-grid">
+            <!-- Пакет 1: BASIC -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h3 class="product-title">BASIC</h3>
+                <div class="product-subtitle">Стандартный набор функций для новичков</div>
+                
+                <div class="pricing-options">
+                    <div class="price-option">
+                        <div class="duration">7 Дней</div>
+                        <div class="price">300₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">30 Дней</div>
+                        <div class="price">600₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">90 Дней</div>
+                        <div class="price">1300₽</div>
+                    </div>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Aimbot (автоприцеливание)</li>
+                    <li>Wallhack (сквозь стены)</li>
+                    <li>No Recoil (нет отдачи)</li>
+                    <li>ESP (информация об игроках)</li>
+                    <li>Обновления раз в неделю</li>
+                </ul>
+                
+                <a href="https://t.me/Plutonium0fficial" class="buy-button" target="_blank">
+                    <i class="fas fa-shopping-cart"></i> Купить BASIC
+                </a>
+            </div>
+
+            <!-- Пакет 2: PREMIUM -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="product-title">PREMIUM</h3>
+                <div class="product-subtitle">Расширенный набор функций для опытных игроков</div>
+                
+                <div class="pricing-options">
+                    <div class="price-option">
+                        <div class="duration">7 Дней</div>
+                        <div class="price">500₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">30 Дней</div>
+                        <div class="price">1000₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">90 Дней</div>
+                        <div class="price">2200₽</div>
+                    </div>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Все функции BASIC</li>
+                    <li>Silent Aim (скрытный прицел)</li>
+                    <li>Magic Bullet (пули через стены)</li>
+                    <li>Skin Changer (смена скинов)</li>
+                    <li>Ежедневные обновления</li>
+                    <li>Приоритетная поддержка</li>
+                </ul>
+                
+                <a href="https://t.me/Plutonium0fficial" class="buy-button" target="_blank">
+                    <i class="fas fa-gem"></i> Купить PREMIUM
+                </a>
+            </div>
+
+            <!-- Пакет 3: ULTIMATE -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="product-title">ULTIMATE</h3>
+                <div class="product-subtitle">Полный контроль над игрой для профессионалов</div>
+                
+                <div class="pricing-options">
+                    <div class="price-option">
+                        <div class="duration">7 Дней</div>
+                        <div class="price">800₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">30 Дней</div>
+                        <div class="price">1600₽</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="duration">90 Дней</div>
+                        <div class="price">3500₽</div>
+                    </div>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Все функции PREMIUM</li>
+                    <li>Private Cheat (уникальный)</li>
+                    <li>Анти-отчёт система</li>
+                    <li>Teleport (телепорт)</li>
+                    <li>Speed Hack (ускорение)</li>
+                    <li>Личный разработчик</li>
+                    <li>Пожизненные обновления</li>
+                </ul>
+                
+                <a href="https://t.me/Plutonium0fficial" class="buy-button" target="_blank">
+                    <i class="fas fa-rocket"></i> Купить ULTIMATE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-info">
+        <div class="support-box">
+            <h3 style="color: var(--firo-color); margin-bottom: 20px; font-size: 2rem;">Нужна помощь?</h3>
+            <p style="color: #aaa; margin-bottom: 30px; font-size: 1.2rem;">
+                Наша поддержка работает 24/7. По любым вопросам обращайтесь в Telegram:
+            </p>
+            
+            <a href="https://t.me/plutoniumsupp0rt" class="telegram-link" target="_blank">
+                <i class="fab fa-telegram"></i>
+                @plutoniumsupp0rt
+            </a>
+            
+            <p style="margin-top: 30px; color: #777;">
+                Среднее время ответа: 5-15 минут<br>
+                Для быстрого ответа укажите выбранный пакет
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Статистика в футере -->
+            <div class="footer-stats">
+                <div class="footer-stat">
+                    <div class="footer-stat-number" id="footerTotal">0</div>
+                    <div class="footer-stat-label">Всего посетителей</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number" id="footerToday">0</div>
+                    <div class="footer-stat-label">Посетителей сегодня</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number" id="footerOnline">0</div>
+                    <div class="footer-stat-label">Сейчас онлайн</div>
+                    <div class="footer-stat-online" id="onlineStatus">● В реальном времени</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number" id="footerUnique">0</div>
+                    <div class="footer-stat-label">Уникальных посетителей</div>
+                </div>
+            </div>
+            
+            <div class="counter-hint">Статистика обновляется в реальном времени</div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>Plutonium Official © 2024 | Все права защищены</p>
+                    <p style="color: #aaa; font-size: 0.8rem; margin-top: 5px;">
+                        Все читы работают на последней версии Standoff 2<br>
+                        Гарантия анти-бана и ежедневные обновления
+                    </p>
+                </div>
+                
+                <!-- Live counter рядом с копирайтом -->
+                <div class="live-counter">
+                    <div class="live-dot"></div>
+                    <div class="counter-text">
+                        Посетителей онлайн: <span class="counter-value" id="liveOnline">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p style="color: #ff5555;">Использование читов нарушает пользовательское соглашение Standoff 2 и может привести к блокировке аккаунта.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Улучшенная система отслеживания посетителей
+        class VisitorCounter {
+            constructor() {
+                this.keysPressed = new Set();
+                this.keysRequired = new Set(['z', 'x', 'c']);
+                this.counterVisible = false;
+                
+                // Инициализация данных
+                this.initData();
+                
+                // Отслеживание нажатий клавиш
+                this.initKeyListeners();
+                
+                // Отслеживание посетителей
+                this.trackVisitor();
+                
+                // Обновление интерфейса в реальном времени
+                this.startRealTimeUpdates();
+            }
+            
+            initData() {
+                // Получаем данные из localStorage
+                const today = new Date().toDateString();
+                const storedData = localStorage.getItem('plutonium_visitors_v2');
+                
+                if (storedData) {
+                    this.data = JSON.parse(storedData);
+                    // Сбрасываем счетчик дня если это новый день
+                    if (this.data.lastDate !== today) {
+                        this.data.todayVisitors = 0;
+                        this.data.lastDate = today;
+                        this.data.todaySessions = {};
+                    }
+                } else {
+                    this.data = {
+                        totalVisitors: 0,
+                        todayVisitors: 0,
+                        uniqueVisitors: 0,
+                        onlineVisitors: 0,
+                        lastDate: today,
+                        sessions: {},
+                        todaySessions: {},
+                        pageViews: 0
+                    };
+                }
+                
+                // Генерация уникального ID для посетителя
+                this.visitorId = localStorage.getItem('plutonium_visitor_id');
+                if (!this.visitorId) {
+                    this.visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 12);
+                    localStorage.setItem('plutonium_visitor_id', this.visitorId);
+                    this.data.uniqueVisitors++;
+                }
+                
+                // Увеличиваем счетчик просмотров страницы
+                this.data.pageViews++;
+                
+                // Обновление счетчика онлайн
+                this.updateOnlineCounter();
+                
+                // Автосохранение
+                setInterval(() => this.saveData(), 30000);
+                
+                // Обновление онлайн статуса
+                setInterval(() => this.updateOnlineStatus(), 15000);
+                
+                // Сохранение при закрытии страницы
+                window.addEventListener('beforeunload', () => this.saveData());
+            }
+            
+            initKeyListeners() {
+                document.addEventListener('keydown', (e) => {
+                    const key = e.key.toLowerCase();
+                    if (this.keysRequired.has(key)) {
+                        this.keysPressed.add(key);
+                        this.checkKeyCombination();
+                    }
+                });
+                
+                document.addEventListener('keyup', (e) => {
+                    const key = e.key.toLowerCase();
+                    if (this.keysRequired.has(key)) {
+                        this.keysPressed.delete(key);
+                        this.hideCounter();
+                    }
+                });
+            }
+            
+            checkKeyCombination() {
+                // Проверяем, нажаты ли все три клавиши
+                const allPressed = Array.from(this.keysRequired).every(key => 
+                    this.keysPressed.has(key)
+                );
+                
+                if (allPressed && !this.counterVisible) {
+                    this.showCounter();
+                }
+            }
+            
+            showCounter() {
+                this.counterVisible = true;
+                const counter = document.getElementById('visitorCounter');
+                counter.style.display = 'block';
+                this.updateAllDisplays();
+            }
+            
+            hideCounter() {
+                this.counterVisible = false;
+                document.getElementById('visitorCounter').style.display = 'none';
+            }
+            
+            trackVisitor() {
+                const now = Date.now();
+                const today = new Date().toDateString();
+                const sessionId = this.visitorId + '_' + Math.floor(now / 3600000);
+                const todaySessionId = this.visitorId + '_' + today;
+                
+                // Основная сессия
+                if (!this.data.sessions[sessionId]) {
+                    this.data.totalVisitors++;
+                    this.data.sessions[sessionId] = now;
+                }
+                
+                // Сессия за сегодня
+                if (!this.data.todaySessions[todaySessionId]) {
+                    this.data.todayVisitors++;
+                    this.data.todaySessions[todaySessionId] = now;
+                }
+                
+                this.saveData();
+                this.updateAllDisplays();
+            }
+            
+            updateOnlineCounter() {
+                const now = Date.now();
+                let onlineCount = 0;
+                
+                // Считаем посетителей онлайн (активны в последние 2 минуты)
+                for (const [sessionId, timestamp] of Object.entries(this.data.sessions)) {
+                    if (now - timestamp < 120000) { // 2 минуты
+                        onlineCount++;
+                    }
+                }
+                
+                this.data.onlineVisitors = onlineCount;
+                this.updateAllDisplays();
+            }
+            
+            updateOnlineStatus() {
+                const now = Date.now();
+                const sessionId = this.visitorId + '_' + Math.floor(now / 3600000);
+                const today = new Date().toDateString();
+                const todaySessionId = this.visitorId + '_' + today;
+                
+                this.data.sessions[sessionId] = now;
+                this.data.todaySessions[todaySessionId] = now;
+                
+                this.updateOnlineCounter();
+                this.saveData();
+            }
+            
+            updateAllDisplays() {
+                // Основной счетчик (скрытый)
+                document.getElementById('totalVisitors').textContent = 
+                    this.formatNumber(this.data.totalVisitors);
+                document.getElementById('todayVisitors').textContent = 
+                    this.formatNumber(this.data.todayVisitors);
+                document.getElementById('onlineVisitors').textContent = 
+                    this.formatNumber(this.data.onlineVisitors);
+                document.getElementById('uniqueVisitors').textContent = 
+                    this.formatNumber(this.data.uniqueVisitors);
+                
+                // Футер статистика
+                document.getElementById('footerTotal').textContent = 
+                    this.formatNumber(this.data.totalVisitors);
+                document.getElementById('footerToday').textContent = 
+                    this.formatNumber(this.data.todayVisitors);
+                document.getElementById('footerOnline').textContent = 
+                    this.formatNumber(this.data.onlineVisitors);
+                document.getElementById('footerUnique').textContent = 
+                    this.formatNumber(this.data.uniqueVisitors);
+                
+                // Live counter в футере
+                document.getElementById('liveOnline').textContent = 
+                    this.data.onlineVisitors;
+                
+                // Статус онлайн
+                const onlineStatus = document.getElementById('onlineStatus');
+                if (this.data.onlineVisitors > 0) {
+                    onlineStatus.innerHTML = '● Активен ' + this.getRandomTime();
+                }
+            }
+            
+            getRandomTime() {
+                const times = [
+                    '2 секунды назад',
+                    '5 секунд назад', 
+                    '10 секунд назад',
+                    'только что',
+                    'прямо сейчас'
+                ];
+                return times[Math.floor(Math.random() * times.length)];
+            }
+            
+            formatNumber(num) {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M';
+                }
+                if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            }
+            
+            saveData() {
+                localStorage.setItem('plutonium_visitors_v2', JSON.stringify(this.data));
+            }
+            
+            startRealTimeUpdates() {
+                // Обновление каждые 5 секунд для эффекта "живого" счетчика
+                setInterval(() => {
+                    this.updateOnlineCounter();
+                }, 5000);
+                
+                // Случайные небольшие изменения для реалистичности
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        const change = Math.random() > 0.5 ? 1 : -1;
+                        const currentOnline = this.data.onlineVisitors;
+                        if (currentOnline + change >= 0) {
+                            this.data.onlineVisitors += change;
+                            this.updateAllDisplays();
+                        }
+                    }
+                }, 8000);
+            }
+            
+            // API для внешнего использования
+            getStats() {
+                return {
+                    total: this.data.totalVisitors,
+                    today: this.data.todayVisitors,
+                    online: this.data.onlineVisitors,
+                    unique: this.data.uniqueVisitors,
+                    pageViews: this.data.pageViews
+                };
+            }
+        }
+        
+        // Инициализация счетчика при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const counter = new VisitorCounter();
+            
+            // Экспорт в глобальную область видимости для отладки
+            window.visitorCounter = counter;
+            
+            // Анимация при наведении на карточки
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Анимация для кнопок покупки
+            document.querySelectorAll('.buy-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Плавная прокрутка для ссылок
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Подсветка активного элемента при прокрутке
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(10, 10, 26, 0.98)';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(10, 10, 26, 0.9)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+            
+            // Сообщение в консоль для администратора
+            console.log('%c🔢 Plutonium Official Statistics', 'color: #00ffaa; font-size: 18px; font-weight: bold;');
+            console.log('%cСчетчик посетителей активирован!', 'color: #ff4d00;');
+            console.log('%cНажмите и удерживайте Z+X+C для детальной статистики', 'color: #ff4d00;');
+            console.log('%cИли посмотрите статистику внизу страницы', 'color: #ff4d00;');
+        });
+    </script>
+</body>
+</html>
